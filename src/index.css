@@ -5,9 +5,38 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url("./assets/images/background.png");
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "momcake";
+  src: url("./assets/fonts/MOMCAKE-Thin.otf");
+  font-weight: 400px;
+}
+
+@font-face {
+  font-family: "momcake";
+  src: url("./assets/fonts/MOMCAKE-Bold.otf");
+  font-weight: 700px;
+}
+
+@font-face {
+  font-family: "noto";
+  src: url("./assets/fonts/19167.ttf");
+  font-weight: 400px;
+}
+
+@font-face {
+  font-family: "noto";
+  src: url("./assets/fonts/17518.ttf");
+  font-weight: 700px;
 }

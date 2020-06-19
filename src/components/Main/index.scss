@@ -1,0 +1,21 @@
+.main-content {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.todo-block {
+  &__title {
+    font-family: "momcake";
+    font-size: 6rem;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    padding-bottom: 15px;
+  }
+
+  &__content {
+    -webkit-box-shadow: -1px 3px 15px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 3px 15px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 3px 15px 1px rgba(0, 0, 0, 0.75);
+  }
+}

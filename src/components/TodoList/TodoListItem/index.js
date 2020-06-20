@@ -1,10 +1,14 @@
 import React from "react";
 import "./index.scss";
 import { connect } from "react-redux";
-import { editTodo, deleteTodo } from "../../../store/actions/todo";
+import {
+  editTodo,
+  deleteTodo,
+  changeTodoStatus,
+} from "../../../store/actions/todo";
 
 const TodoListItem = (props) => {
-  console.log(props);
+  const todoId = props.todo.id;
   const [checkboxState, setCheckboxState] = React.useState(
     props.todo.completed
   );
@@ -16,18 +20,17 @@ const TodoListItem = (props) => {
   };
   const onDeleteButtonClick = () => {
     props.deleteTodo({
-      id: props.todo.id,
+      id: todoId,
     });
   };
   React.useLayoutEffect(() => {
     if (inputRef.current) {
-      console.log(inputRef);
       inputRef.current.focus();
     }
   }, [inputRef]);
   const onTodoBlur = () => {
     props.editTodo({
-      id: props.todo.id,
+      id: todoId,
       newTodoText: todoState,
     });
     setEditableStatus(false);
@@ -46,6 +49,7 @@ const TodoListItem = (props) => {
         className="todo__checkbox"
         checked={checkboxState}
         onClick={() => {
+          props.changeTodoStatus({ id: todoId });
           setCheckboxState(!checkboxState);
         }}
       />
@@ -56,7 +60,7 @@ const TodoListItem = (props) => {
         onKeyPress={(e) => {
           if (e.key === "Enter") {
             props.editTodo({
-              id: props.todo.id,
+              id: todoId,
               newTodoText: todoState,
             });
             setEditableStatus(false);
@@ -70,4 +74,6 @@ const TodoListItem = (props) => {
   );
 };
 
-export default connect(null, { editTodo, deleteTodo })(TodoListItem);
+export default connect(null, { editTodo, deleteTodo, changeTodoStatus })(
+  TodoListItem
+);

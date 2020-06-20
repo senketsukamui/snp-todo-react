@@ -9,6 +9,9 @@ export const editTodo = (payload) => {
 };
 
 export const deleteTodo = (payload) => {
-  console.log(payload);
   return { type: ActionTypes.DELETE_TODO, payload };
+};
+
+export const changeTodoStatus = (payload) => {
+  return { type: ActionTypes.CHANGE_TODO_STATUS, payload };
 };

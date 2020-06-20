@@ -2,6 +2,7 @@ import React from "react";
 import "./index.scss";
 import { connect } from "react-redux";
 import { createTodo } from "../../store/actions/todo";
+import { nanoid } from "nanoid";
 
 const Input = (props) => {
   const [inputState, setInputState] = React.useState("");
@@ -12,7 +13,7 @@ const Input = (props) => {
         e.preventDefault();
         if (inputState.length) {
           props.createTodo({
-            id: Date.now(),
+            id: nanoid(),
             content: inputState,
             completed: false,
           });

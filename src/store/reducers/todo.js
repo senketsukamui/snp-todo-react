@@ -1,22 +1,33 @@
 import ActionTypes from "../actions";
 import { createReducer } from "@reduxjs/toolkit";
+import * as _ from "lodash";
+
 const initialState = {
-  todos: [],
+  todos: {},
   currentSort: "all",
 };
 
 export const todoReducer = createReducer(initialState, {
   [ActionTypes.CREATE_TODO]: (state, action) => {
-    const todo = action.payload;
-    state.todos.push(todo);
+    const todo = {
+      content: action.payload.content,
+      completed: action.payload.completed,
+      id: action.payload.id,
+    };
+    state.todos[action.payload.id] = todo;
   },
+
   [ActionTypes.EDIT_TODO]: (state, action) => {
-    const idx = state.todos.findIndex((todo) => todo.id === action.payload.id);
-    if (idx === -1) return state;
     const newTodoContent = action.payload.newTodoText;
-    state.todos[idx].content = newTodoContent;
+    state.todos[action.payload.id].content = newTodoContent;
   },
+
   [ActionTypes.DELETE_TODO]: (state, action) => {
-    state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
+    state.todos = _.omit(state.todos, action.payload.id);
+  },
+
+  [ActionTypes.CHANGE_TODO_STATUS]: (state, action) => {
+    const currentTodoStatus = state.todos[action.payload.id].completed;
+    state.todos[action.payload.id].completed = !currentTodoStatus;
   },
 });

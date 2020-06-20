@@ -1,0 +1,37 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid grey;
+  padding: 5px;
+  &__count {
+    font-family: "momcake";
+    font-size: 1.2rem;
+    padding: 3px;
+  }
+  &__clear {
+    font-family: "momcake";
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 3px;
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s;
+    }
+  }
+}
+
+.sorts {
+  display: flex;
+  justify-content: space-between;
+  &__active,
+  &__completed {
+    margin-left: 1rem;
+  }
+  &__all,
+  &__active,
+  &__completed {
+    font-family: "momcake";
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+}

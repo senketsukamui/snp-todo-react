@@ -3,35 +3,49 @@ import "./index.scss";
 import { connect } from "react-redux";
 import { createTodo } from "../../store/actions/todo";
 import { nanoid } from "nanoid";
+import { completeAllTodos } from "../../store/actions/todo";
 
 const Input = (props) => {
   const [inputState, setInputState] = React.useState("");
   return (
-    <form
-      className="todo-form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (inputState.length) {
-          props.createTodo({
-            id: nanoid(),
-            content: inputState,
-            completed: false,
-          });
-          setInputState("");
-        }
-      }}
-    >
-      <input
-        className="todo-form__input"
-        type="text"
-        placeholder="What you gonna do?"
-        onChange={(e) => {
-          setInputState(e.target.value);
+    <div className="todo-form">
+      <button
+        className="todo-form__complete-all"
+        onClick={(e) => {
+          props.completeAllTodos();
         }}
-        value={inputState}
       />
-    </form>
+      <form
+        className="todo-form__form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (inputState.length) {
+            props.createTodo({
+              id: nanoid(),
+              content: inputState,
+              completed: false,
+            });
+            setInputState("");
+          }
+        }}
+      >
+        <input
+          className="todo-form__input"
+          type="text"
+          placeholder="What you gonna do?"
+          onChange={(e) => {
+            setInputState(e.target.value);
+          }}
+          value={inputState}
+        />
+      </form>
+    </div>
   );
 };
 
-export default connect(null, { createTodo })(Input);
+export default connect(
+  (store) => ({
+    todos: store.todo.todos,
+  }),
+  { createTodo, completeAllTodos }
+)(Input);

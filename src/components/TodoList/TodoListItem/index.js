@@ -9,14 +9,14 @@ import {
 
 const TodoListItem = (props) => {
   const todoId = props.todo.id;
-  const [checkboxState, setCheckboxState] = React.useState(
-    props.todo.completed
-  );
-  const [isEditable, setEditableStatus] = React.useState(false);
+  const [isEditable, setEditableStatus] = React.useState(props.completed);
   const [todoState, setTodoState] = React.useState(props.todo.content);
   const inputRef = React.createRef();
   const onTodoDblClick = () => {
     setEditableStatus(true);
+  };
+  const onCheckboxClick = () => {
+    props.changeTodoStatus({ id: todoId });
   };
   const onDeleteButtonClick = () => {
     props.deleteTodo({
@@ -44,15 +44,13 @@ const TodoListItem = (props) => {
   );
   return (
     <div className="todo">
-      <input
-        type="checkbox"
-        className="todo__checkbox"
-        checked={checkboxState}
-        onClick={() => {
-          props.changeTodoStatus({ id: todoId });
-          setCheckboxState(!checkboxState);
-        }}
-      />
+      <div className="todo__checkbox" onClick={onCheckboxClick}>
+        {props.todo.completed ? (
+          <i class="far fa-check-circle"></i>
+        ) : (
+          <i class="far fa-circle"></i>
+        )}
+      </div>
       <div
         className="todo__text"
         onDoubleClick={onTodoDblClick}

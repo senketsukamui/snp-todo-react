@@ -1,8 +1,18 @@
 .todo-form {
+  display: flex;
   &__input {
     font-size: 2rem;
     font-family: "noto";
     padding-left: 10px;
     width: 100%;
+  }
+
+  &__complete-all {
+    background: url("../../assets/images/down-arrow.svg");
+    width: 50px;
+    height: 50px;
+    padding: 0px 0px;
+    cursor: pointer;
+    margin-left: 10px;
   }
 }

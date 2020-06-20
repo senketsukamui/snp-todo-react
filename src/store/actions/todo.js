@@ -15,3 +15,7 @@ export const deleteTodo = (payload) => {
 export const changeTodoStatus = (payload) => {
   return { type: ActionTypes.CHANGE_TODO_STATUS, payload };
 };
+
+export const completeAllTodos = () => {
+  return { type: ActionTypes.COMPLETE_ALL };
+};

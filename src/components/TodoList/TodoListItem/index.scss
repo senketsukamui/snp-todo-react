@@ -31,4 +31,10 @@
     transition: opacity 0.2s;
     cursor: pointer;
   }
+  &__checkbox {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    cursor: pointer;
+  }
 }

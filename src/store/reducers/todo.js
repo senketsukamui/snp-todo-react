@@ -30,4 +30,18 @@ export const todoReducer = createReducer(initialState, {
     const currentTodoStatus = state.todos[action.payload.id].completed;
     state.todos[action.payload.id].completed = !currentTodoStatus;
   },
+
+  [ActionTypes.COMPLETE_ALL]: (state, action) => {
+    if (Object.values(state.todos).some((e) => !e.completed)) {
+      Object.keys(state.todos).forEach((e) => {
+        if (!e.completed) {
+          state.todos[e].completed = true;
+        }
+      });
+    } else {
+      Object.keys(state.todos).forEach((e) => {
+        state.todos[e].completed = !state.todos[e].completed;
+      });
+    }
+  },
 });

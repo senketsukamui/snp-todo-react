@@ -7,3 +7,8 @@ export const createTodo = (payload) => {
 export const editTodo = (payload) => {
   return { type: ActionTypes.EDIT_TODO, payload };
 };
+
+export const deleteTodo = (payload) => {
+  console.log(payload);
+  return { type: ActionTypes.DELETE_TODO, payload };
+};

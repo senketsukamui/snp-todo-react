@@ -1,20 +1,35 @@
 import React from "react";
 import "./index.scss";
-import { isEnterPressed } from "../../../utils";
-import { useFocus } from "../../../hooks";
+import { connect } from "react-redux";
+import { editTodo, deleteTodo } from "../../../store/actions/todo";
 
 const TodoListItem = (props) => {
+  console.log(props);
   const [checkboxState, setCheckboxState] = React.useState(
     props.todo.completed
   );
   const [isEditable, setEditableStatus] = React.useState(false);
   const [todoState, setTodoState] = React.useState(props.todo.content);
-  const [inputRef, setInputFocus] = useFocus();
+  const inputRef = React.createRef();
   const onTodoDblClick = () => {
     setEditableStatus(true);
-    setInputFocus();
   };
-  const onTodoFocusOut = () => {
+  const onDeleteButtonClick = () => {
+    props.deleteTodo({
+      id: props.todo.id,
+    });
+  };
+  React.useLayoutEffect(() => {
+    if (inputRef.current) {
+      console.log(inputRef);
+      inputRef.current.focus();
+    }
+  }, [inputRef]);
+  const onTodoBlur = () => {
+    props.editTodo({
+      id: props.todo.id,
+      newTodoText: todoState,
+    });
     setEditableStatus(false);
   };
   const editableTodoText = (
@@ -37,18 +52,22 @@ const TodoListItem = (props) => {
       <div
         className="todo__text"
         onDoubleClick={onTodoDblClick}
-        onBlur={onTodoFocusOut}
+        onBlur={onTodoBlur}
         onKeyPress={(e) => {
-          if (isEnterPressed) {
+          if (e.key === "Enter") {
+            props.editTodo({
+              id: props.todo.id,
+              newTodoText: todoState,
+            });
             setEditableStatus(false);
           }
         }}
       >
         {isEditable ? editableTodoText : todoState}
       </div>
-      <button className="todo__delete-button" />
+      <button className="todo__delete-button" onClick={onDeleteButtonClick} />
     </div>
   );
 };
 
-export default TodoListItem;
+export default connect(null, { editTodo, deleteTodo })(TodoListItem);

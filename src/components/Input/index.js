@@ -10,11 +10,14 @@ const Input = (props) => {
       className="todo-form"
       onSubmit={(e) => {
         e.preventDefault();
-        props.createTodo({
-          id: Date.now(),
-          content: inputState,
-          completed: false,
-        });
+        if (inputState.length) {
+          props.createTodo({
+            id: Date.now(),
+            content: inputState,
+            completed: false,
+          });
+          setInputState("");
+        }
       }}
     >
       <input
@@ -24,6 +27,7 @@ const Input = (props) => {
         onChange={(e) => {
           setInputState(e.target.value);
         }}
+        value={inputState}
       />
     </form>
   );

@@ -1,7 +1,5 @@
 import ActionTypes from "../actions";
 import { createReducer } from "@reduxjs/toolkit";
-import { act } from "react-dom/test-utils";
-
 const initialState = {
   todos: [],
   currentSort: "all",
@@ -9,19 +7,16 @@ const initialState = {
 
 export const todoReducer = createReducer(initialState, {
   [ActionTypes.CREATE_TODO]: (state, action) => {
-    return {
-      ...state,
-      todos: [...state.todos, action.payload],
-    };
+    const todo = action.payload;
+    state.todos.push(todo);
   },
   [ActionTypes.EDIT_TODO]: (state, action) => {
-    const idx = state.todos.findIndex((todo) => (todo.id = action.payload.id));
+    const idx = state.todos.findIndex((todo) => todo.id === action.payload.id);
     if (idx === -1) return state;
-    const newTodosState = { ...state.todos };
-    newTodosState[idx].content = action.payload.newTodoContent;
-    return {
-      ...state,
-      todos: newTodosState,
-    };
+    const newTodoContent = action.payload.newTodoText;
+    state.todos[idx].content = newTodoContent;
+  },
+  [ActionTypes.DELETE_TODO]: (state, action) => {
+    state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
   },
 });

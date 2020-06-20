@@ -1,10 +1,11 @@
 import ActionTypes from "../actions";
 import { createReducer } from "@reduxjs/toolkit";
 import * as _ from "lodash";
+import { FILTER_TYPES } from "../../utils";
 
 const initialState = {
   todos: {},
-  currentSort: "all",
+  filterType: FILTER_TYPES.ALL,
 };
 
 export const todoReducer = createReducer(initialState, {
@@ -43,5 +44,13 @@ export const todoReducer = createReducer(initialState, {
         state.todos[e].completed = !state.todos[e].completed;
       });
     }
+  },
+
+  [ActionTypes.CHANGE_CURRENT_FILTER]: (state, action) => {
+    state.filterType = action.payload.filterType;
+  },
+
+  [ActionTypes.CLEAR_COMPLETED_TODOS]: (state, action) => {
+    state.todos = _.omitBy(state.todos, (todo) => todo.completed);
   },
 });

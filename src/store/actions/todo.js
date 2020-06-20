@@ -19,3 +19,11 @@ export const changeTodoStatus = (payload) => {
 export const completeAllTodos = () => {
   return { type: ActionTypes.COMPLETE_ALL };
 };
+
+export const changeCurrentFilter = (payload) => {
+  return { type: ActionTypes.CHANGE_CURRENT_FILTER, payload };
+};
+
+export const clearCompletedTodos = () => {
+  return { type: ActionTypes.CLEAR_COMPLETED_TODOS };
+};

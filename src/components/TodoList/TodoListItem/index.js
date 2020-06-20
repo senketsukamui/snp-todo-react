@@ -46,9 +46,9 @@ const TodoListItem = (props) => {
     <div className="todo">
       <div className="todo__checkbox" onClick={onCheckboxClick}>
         {props.todo.completed ? (
-          <i class="far fa-check-circle"></i>
+          <i className="far fa-check-circle"></i>
         ) : (
-          <i class="far fa-circle"></i>
+          <i className="far fa-circle"></i>
         )}
       </div>
       <div

@@ -2,9 +2,10 @@ import ActionTypes from "../actions";
 import { createReducer } from "@reduxjs/toolkit";
 import * as _ from "lodash";
 import { FILTER_TYPES } from "../../utils";
+import { getLocalStorageTodos } from "../../utils";
 
 const initialState = {
-  todos: {},
+  todos: getLocalStorageTodos() || {},
   filterType: FILTER_TYPES.ALL,
 };
 

@@ -18,3 +18,7 @@ Object.filter = (obj, predicate) =>
 
 export const filterTodo = (todos, filterType) =>
   Object.filter(todos, FILTER_PREDICATES[filterType]);
+
+export const getLocalStorageTodos = () => {
+  return JSON.parse(localStorage.getItem("storedTodos"));
+};

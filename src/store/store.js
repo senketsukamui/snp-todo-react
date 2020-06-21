@@ -6,4 +6,11 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+store.subscribe(() => {
+  localStorage.setItem(
+    "storedTodos",
+    JSON.stringify(store.getState().todo.todos)
+  );
+});
+
 export default store;

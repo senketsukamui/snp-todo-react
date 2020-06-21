@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/snp-todo-react/static/css/main.81d09fe9.chunk.css",
+    "main.js": "/snp-todo-react/static/js/main.68f3e733.chunk.js",
+    "main.js.map": "/snp-todo-react/static/js/main.68f3e733.chunk.js.map",
+    "runtime-main.js": "/snp-todo-react/static/js/runtime-main.f68be9ee.js",
+    "runtime-main.js.map": "/snp-todo-react/static/js/runtime-main.f68be9ee.js.map",
+    "static/js/2.acdad4ad.chunk.js": "/snp-todo-react/static/js/2.acdad4ad.chunk.js",
+    "static/js/2.acdad4ad.chunk.js.map": "/snp-todo-react/static/js/2.acdad4ad.chunk.js.map",
+    "index.html": "/snp-todo-react/index.html",
+    "precache-manifest.fb4810dfad4046a3a37bbed96cdfca6a.js": "/snp-todo-react/precache-manifest.fb4810dfad4046a3a37bbed96cdfca6a.js",
+    "service-worker.js": "/snp-todo-react/service-worker.js",
+    "static/css/main.81d09fe9.chunk.css.map": "/snp-todo-react/static/css/main.81d09fe9.chunk.css.map",
+    "static/js/2.acdad4ad.chunk.js.LICENSE.txt": "/snp-todo-react/static/js/2.acdad4ad.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/snp-todo-react/static/media/background.246c824b.png",
+    "static/media/index.scss": "/snp-todo-react/static/media/down-arrow.cf5b76fd.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f68be9ee.js",
+    "static/js/2.acdad4ad.chunk.js",
+    "static/css/main.81d09fe9.chunk.css",
+    "static/js/main.68f3e733.chunk.js"
+  ]
+}

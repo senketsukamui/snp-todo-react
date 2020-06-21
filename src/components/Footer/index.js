@@ -6,6 +6,7 @@ import {
   clearCompletedTodos,
 } from "../../store/actions/todo";
 import { FILTER_TYPES } from "../../utils";
+import capitalize from "lodash/capitalize";
 const Footer = (props) => {
   const todosCopy = props.todos;
   const activeTodosCount = React.useMemo(
@@ -15,31 +16,22 @@ const Footer = (props) => {
   const filterTypeHandler = (e) => {
     props.changeCurrentFilter({ filterType: e.target.name });
   };
+  const filterButtons = Object.values(FILTER_TYPES).map((filterType) => (
+    <button
+      name={filterType}
+      onClick={filterTypeHandler}
+      className={`filters__${filterType.toLowerCase()} filters__${filterType.toLowerCase()}${
+        props.filterType === filterType ? `_active` : ""
+      }`}
+    >
+      {capitalize(filterType)}
+    </button>
+  ));
   return (
     <div className="footer">
       <div className="footer__count">Todos left: {activeTodosCount}</div>
       <div className="filters">
-        <button
-          className="filters__all"
-          name={FILTER_TYPES.ALL}
-          onClick={filterTypeHandler}
-        >
-          All
-        </button>
-        <button
-          className="filters__active"
-          name={FILTER_TYPES.ACTIVE}
-          onClick={filterTypeHandler}
-        >
-          Active
-        </button>
-        <button
-          className="filters__completed"
-          name={FILTER_TYPES.COMPLETED}
-          onClick={filterTypeHandler}
-        >
-          Completed
-        </button>
+        {filterButtons}
       </div>
       <button className="footer__clear" onClick={props.clearCompletedTodos}>
         Clear completed
@@ -51,6 +43,7 @@ const Footer = (props) => {
 export default connect(
   (store) => ({
     todos: store.todo.todos,
+    filterType: store.todo.filterType,
   }),
   { changeCurrentFilter, clearCompletedTodos }
 )(Footer);

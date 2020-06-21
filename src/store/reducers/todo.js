@@ -1,6 +1,7 @@
 import ActionTypes from "../actions";
 import { createReducer } from "@reduxjs/toolkit";
-import * as _ from "lodash";
+import omit from "lodash/omit";
+import omitBy from "lodash/omitBy";
 import { FILTER_TYPES } from "../../utils";
 import { getLocalStorageTodos } from "../../utils";
 
@@ -25,7 +26,7 @@ export const todoReducer = createReducer(initialState, {
   },
 
   [ActionTypes.DELETE_TODO]: (state, action) => {
-    state.todos = _.omit(state.todos, action.payload.id);
+    state.todos = omit(state.todos, action.payload.id);
   },
 
   [ActionTypes.CHANGE_TODO_STATUS]: (state, action) => {
@@ -52,6 +53,6 @@ export const todoReducer = createReducer(initialState, {
   },
 
   [ActionTypes.CLEAR_COMPLETED_TODOS]: (state, action) => {
-    state.todos = _.omitBy(state.todos, (todo) => todo.completed);
+    state.todos = omitBy(state.todos, (todo) => todo.completed);
   },
 });

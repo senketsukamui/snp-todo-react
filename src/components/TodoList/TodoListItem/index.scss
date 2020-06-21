@@ -18,6 +18,13 @@
     padding-left: 10px;
     width: 100%;
     word-break: break-all;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+  &__edit {
+    font-size: 1.5rem;
+    font-family: "noto";
   }
   &__delete-button {
     background-image: url("../../../assets/images/delete.png");
@@ -31,10 +38,16 @@
     transition: opacity 0.2s;
     cursor: pointer;
   }
+
   &__checkbox {
-    width: 38px;
-    height: 38px;
+    background-image: url("../../../assets/images/checkbox.svg");
     display: flex;
     cursor: pointer;
+    width: 38px;
+    height: 38px;
+    background-repeat: no-repeat;
+    &_active {
+      background-image: url("../../../assets/images/checkbox-active.svg");
+    }
   }
 }

@@ -7,6 +7,17 @@ import { completeAllTodos } from "../../store/actions/todo";
 
 const Input = (props) => {
   const [inputState, setInputState] = React.useState("");
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    if (inputState.length) {
+      props.createTodo({
+        id: nanoid(),
+        content: inputState,
+        completed: false,
+      });
+      setInputState("");
+    }
+  };
   return (
     <div className="todo-form">
       <button
@@ -15,20 +26,7 @@ const Input = (props) => {
           props.completeAllTodos();
         }}
       />
-      <form
-        className="todo-form__form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (inputState.length) {
-            props.createTodo({
-              id: nanoid(),
-              content: inputState,
-              completed: false,
-            });
-            setInputState("");
-          }
-        }}
-      >
+      <form className="todo-form__form" onSubmit={onFormSubmit}>
         <input
           className="todo-form__input"
           type="text"

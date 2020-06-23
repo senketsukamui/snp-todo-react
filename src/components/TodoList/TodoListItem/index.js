@@ -1,11 +1,7 @@
 import React from "react";
 import "./index.scss";
 import { connect } from "react-redux";
-import {
-  editTodo,
-  deleteTodo,
-  changeTodoStatus,
-} from "../../../store/actions/todo";
+import { editTodo, deleteTodo, changeTodoStatus } from "store/actions/todo";
 
 const TodoListItem = (props) => {
   const todoId = props.todo.id;

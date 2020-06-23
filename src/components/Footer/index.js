@@ -4,18 +4,21 @@ import { connect } from "react-redux";
 import {
   changeCurrentFilter,
   clearCompletedTodos,
-} from "../../store/actions/todo";
-import { FILTER_TYPES } from "../../utils";
+} from "store/actions/todo";
+import { FILTER_TYPES } from "utils";
 import capitalize from "lodash/capitalize";
 const Footer = (props) => {
   const todosCopy = props.todos;
+
   const activeTodosCount = React.useMemo(
     () => Object.values(todosCopy).filter((todo) => !todo.completed).length,
     [todosCopy]
   );
+
   const filterTypeHandler = (e) => {
     props.changeCurrentFilter({ filterType: e.target.name });
   };
+
   const filterButtons = Object.values(FILTER_TYPES).map((filterType) => (
     <button
       name={filterType}
@@ -27,6 +30,7 @@ const Footer = (props) => {
       {capitalize(filterType)}
     </button>
   ));
+  
   return (
     <div className="footer">
       <div className="footer__count">Todos left: {activeTodosCount}</div>

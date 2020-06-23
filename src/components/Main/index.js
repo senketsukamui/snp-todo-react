@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.scss";
-import Input from "../Input";
-import TodoList from "../TodoList";
-import Footer from "../Footer";
+import Input from "components/Input";
+import TodoList from "components/TodoList";
+import Footer from "components/Footer";
 
 const Main = () => {
   return (

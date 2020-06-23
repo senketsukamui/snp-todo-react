@@ -1,14 +1,15 @@
 import React from "react";
 import "./index.scss";
-import TodoListItem from "./TodoListItem";
+import TodoListItem from "components/TodoList/TodoListItem";
 import { connect } from "react-redux";
-import { filterTodo } from "../../utils";
+import { filterTodo } from "utils";
 
 const TodoList = (props) => {
   const filteredTodos = React.useMemo(
     () => filterTodo(props.todos, props.filterType),
     [props.todos, props.filterType]
   );
+
   const todosForRender = React.useMemo(
     () =>
       Object.values(filteredTodos).map((e) => (
@@ -16,6 +17,7 @@ const TodoList = (props) => {
       )),
     [filteredTodos]
   );
+
   return <div className="todos">{todosForRender}</div>;
 };
 

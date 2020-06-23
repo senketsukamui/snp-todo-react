@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.scss";
-import Main from "../Main";
+import Main from "components/Main";
 import { Provider } from "react-redux";
-import store from "../../store/store";
+import store from "store/store";
 
 function App() {
   return (

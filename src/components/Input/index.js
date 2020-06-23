@@ -1,12 +1,13 @@
 import React from "react";
 import "./index.scss";
 import { connect } from "react-redux";
-import { createTodo } from "../../store/actions/todo";
+import { createTodo } from "store/actions/todo";
 import { nanoid } from "nanoid";
-import { completeAllTodos } from "../../store/actions/todo";
+import { completeAllTodos } from "store/actions/todo";
 
 const Input = (props) => {
   const [inputState, setInputState] = React.useState("");
+   
   const onFormSubmit = (e) => {
     e.preventDefault();
     if (inputState.length) {
@@ -18,6 +19,7 @@ const Input = (props) => {
       setInputState("");
     }
   };
+   
   return (
     <div className="todo-form">
       <button

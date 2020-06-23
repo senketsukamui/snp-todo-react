@@ -1,6 +1,11 @@
+@import "../../mixins/mixins.scss";
+
 .main-content {
   width: 600px;
   margin: 0 auto;
+  @include media-mobile {
+    width: 100%;
+  }
 }
 
 .todo-block {
@@ -11,6 +16,9 @@
     text-transform: capitalize;
     text-align: center;
     padding-bottom: 15px;
+    @include media-mobile {
+      font-size: 3rem;
+    }
   }
 
   &__content {

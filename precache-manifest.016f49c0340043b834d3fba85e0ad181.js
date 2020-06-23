@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "425e8167cf40c3f2cf88630acda3c930",
+    "revision": "484b2dc5376d4573c43bd2d7d8b6cd9b",
     "url": "/snp-todo-react/index.html"
   },
   {
-    "revision": "761f90c083043c6a7bdd",
-    "url": "/snp-todo-react/static/css/main.81d09fe9.chunk.css"
+    "revision": "238f3e9fb40301c04ea8",
+    "url": "/snp-todo-react/static/css/main.fc846471.chunk.css"
   },
   {
     "revision": "e70dca491f6817ff1f8a",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/snp-todo-react/static/js/2.acdad4ad.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "761f90c083043c6a7bdd",
-    "url": "/snp-todo-react/static/js/main.68f3e733.chunk.js"
+    "revision": "238f3e9fb40301c04ea8",
+    "url": "/snp-todo-react/static/js/main.8fd80cdf.chunk.js"
   },
   {
     "revision": "3ce8c2a9ee8762d7001b",
@@ -48,8 +48,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/snp-todo-react/static/media/checkbox-active.7a0423bd.svg"
   },
   {
-    "revision": "1fd3f8e8f3a79cc9e9fbea27b335c2ec",
-    "url": "/snp-todo-react/static/media/checkbox.1fd3f8e8.svg"
+    "revision": "759984802129a2dc5eda4682155d9d01",
+    "url": "/snp-todo-react/static/media/circle.75998480.svg"
   },
   {
     "revision": "cf5b76fd304144b38fd28bbc677b4226",

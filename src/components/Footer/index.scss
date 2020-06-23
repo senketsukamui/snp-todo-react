@@ -30,7 +30,7 @@
       transform: scale(1.1);
       transition: transform 0.2s;
       @include media-mobile {
-        transition: none;
+        transform: none;
       }
     }
   }
@@ -64,7 +64,7 @@
       transform: scale(1.1);
       transition: transform 0.3s;
       @include media-mobile {
-        transition: none;
+        transform: none;
       }
     }
   }

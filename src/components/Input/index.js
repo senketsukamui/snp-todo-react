@@ -46,4 +46,4 @@ export default connect(
     todos: store.todo.todos,
   }),
   { createTodo, completeAllTodos }
-)(Input);
+)(React.memo(Input));

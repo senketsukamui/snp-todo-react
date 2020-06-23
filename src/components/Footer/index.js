@@ -30,9 +30,7 @@ const Footer = (props) => {
   return (
     <div className="footer">
       <div className="footer__count">Todos left: {activeTodosCount}</div>
-      <div className="filters">
-        {filterButtons}
-      </div>
+      <div className="filters">{filterButtons}</div>
       <button className="footer__clear" onClick={props.clearCompletedTodos}>
         Clear completed
       </button>
@@ -46,4 +44,4 @@ export default connect(
     filterType: store.todo.filterType,
   }),
   { changeCurrentFilter, clearCompletedTodos }
-)(Footer);
+)(React.memo(Footer));

@@ -16,7 +16,7 @@ const TodoList = (props) => {
       )),
     [filteredTodos]
   );
-  return <div>{todosForRender}</div>;
+  return <div className="todos">{todosForRender}</div>;
 };
 
 export default connect(
@@ -25,4 +25,4 @@ export default connect(
     filterType: state.todo.filterType,
   }),
   null
-)(TodoList);
+)(React.memo(TodoList));

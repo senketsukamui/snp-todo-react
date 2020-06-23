@@ -17,11 +17,20 @@ const TodoListItem = (props) => {
     setEditableStatus(true);
   };
 
-  const onEditFinish = () => {
-    props.editTodo({
+  const onTodoDelete = () => {
+    props.deleteTodo({
       id: todoId,
-      newTodoText: todoState,
     });
+  };
+  const onEditFinish = () => {
+    if (!todoState.length) {
+      onTodoDelete();
+    } else {
+      props.editTodo({
+        id: todoId,
+        newTodoText: todoState,
+      });
+    }
     setEditableStatus(false);
   };
 
@@ -35,21 +44,11 @@ const TodoListItem = (props) => {
     props.changeTodoStatus({ id: todoId });
   };
 
-  const onDeleteButtonClick = () => {
-    props.deleteTodo({
-      id: todoId,
-    });
-  };
-
   React.useLayoutEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
   }, [inputRef]);
-
-  const onTodoBlur = () => {
-    onEditFinish();
-  };
 
   const editableTodoText = (
     <input
@@ -70,16 +69,16 @@ const TodoListItem = (props) => {
       <div
         className="todo__text"
         onDoubleClick={onTodoDblClick}
-        onBlur={onTodoBlur}
+        onBlur={onEditFinish}
         onKeyPress={onEnterPress}
       >
         {isEditable ? editableTodoText : todoState}
       </div>
-      <button className="todo__delete-button" onClick={onDeleteButtonClick} />
+      <button className="todo__delete-button" onClick={onTodoDelete} />
     </div>
   );
 };
 
 export default connect(null, { editTodo, deleteTodo, changeTodoStatus })(
-  TodoListItem
+  React.memo(TodoListItem)
 );

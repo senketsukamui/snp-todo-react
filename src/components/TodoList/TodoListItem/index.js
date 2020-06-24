@@ -40,8 +40,9 @@ const TodoListItem = (props) => {
     setEditableStatus(false);
   }, [dispatch, todoState]);
 
-  const handleEnterPress = (e) => {
-    if (e.key === "Enter") {
+  const handleKeyPress = (e) => {
+    console.log(e);
+    if (e.key === "Enter" || e.key === "Escape") {
       handleEditFinish();
     }
   };
@@ -81,7 +82,7 @@ const TodoListItem = (props) => {
         className="todo__text"
         onDoubleClick={handleDblClick}
         onBlur={handleEditFinish}
-        onKeyPress={handleEnterPress}
+        onKeyDown={handleKeyPress}
       >
         {isEditable ? editableTodoText : todoState}
       </div>

@@ -7,6 +7,7 @@ import {
 } from "store/actions/todo";
 import { FILTER_TYPES } from "utils";
 import capitalize from "lodash/capitalize";
+
 const Footer = (props) => {
   const todosCopy = props.todos;
 

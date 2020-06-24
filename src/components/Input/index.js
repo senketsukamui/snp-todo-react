@@ -8,7 +8,7 @@ import { completeAllTodos } from "store/actions/todo";
 const Input = (props) => {
   const [inputState, setInputState] = React.useState("");
 
-  const onFormSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     if (inputState.length && inputState.trim().length) {
       props.createTodo({
@@ -20,6 +20,10 @@ const Input = (props) => {
     }
   };
 
+  const handleChangeValue = (e) => {
+    setInputState(e.target.value);
+  };
+
   return (
     <div className="todo-form">
       <button
@@ -28,15 +32,13 @@ const Input = (props) => {
           props.completeAllTodos();
         }}
       />
-      <form className="todo-form__form" onSubmit={onFormSubmit}>
+      <form className="todo-form__form" onSubmit={handleFormSubmit}>
         <input
           className="todo-form__input"
           type="text"
           placeholder="What you gonna do?"
-          onChange={(e) => {
-            setInputState(e.target.value);
-          }}
-          onBlur={onFormSubmit}
+          onChange={handleChangeValue}
+          onBlur={handleFormSubmit}
           value={inputState}
         />
       </form>

@@ -1,8 +1,6 @@
 import ActionTypes from "../actions";
 import { createReducer } from "@reduxjs/toolkit";
-import omit from "lodash/omit";
-import omitBy from "lodash/omitBy";
-import pick from "lodash/pick";
+import pickBy from "lodash/pickBy";
 import { FILTER_TYPES } from "../../utils";
 import { getLocalStorageTodos } from "../../utils";
 
@@ -69,6 +67,6 @@ export const todoReducer = createReducer(initialState, {
   },
 
   [CLEAR_COMPLETED_TODOS]: (state, action) => {
-    state.todos = omitBy(state.todos, (todo) => todo.completed);
+    state.todos = pickBy(state.todos, (todo) => !todo.completed);
   },
 });

@@ -9,18 +9,19 @@ const TodoListItem = (props) => {
   const [todoState, setTodoState] = React.useState(props.todo.content);
   const inputRef = React.createRef();
 
-  const onTodoDblClick = () => {
+  const handleDblClick = () => {
     setEditableStatus(true);
   };
 
-  const onTodoDelete = () => {
+  const handleTodoDelete = () => {
     props.deleteTodo({
       id: todoId,
     });
   };
-  const onEditFinish = () => {
+
+  const handleEditFinish = () => {
     if (!todoState.length) {
-      onTodoDelete();
+      handleTodoDelete();
     } else {
       props.editTodo({
         id: todoId,
@@ -30,13 +31,13 @@ const TodoListItem = (props) => {
     setEditableStatus(false);
   };
 
-  const onEnterPress = (e) => {
+  const handleEnterPress = (e) => {
     if (e.key === "Enter") {
-      onEditFinish();
+      handleEditFinish();
     }
   };
 
-  const onCheckboxClick = () => {
+  const handleCheckboxClick = () => {
     props.changeTodoStatus({ id: todoId });
   };
 
@@ -46,31 +47,36 @@ const TodoListItem = (props) => {
     }
   }, [inputRef]);
 
+  const handleEditValue = (e) => {
+    setTodoState(e.target.value);
+  };
+
   const editableTodoText = (
     <input
       value={todoState}
       ref={inputRef}
-      onChange={(e) => setTodoState(e.target.value)}
+      onChange={handleEditValue}
       classname="todo__edit"
     />
   );
+  
   return (
     <div className="todo">
       <i
         className={`todo__checkbox ${
           props.todo.completed && "todo__checkbox_active"
         }`}
-        onClick={onCheckboxClick}
+        onClick={handleCheckboxClick}
       ></i>
       <div
         className="todo__text"
-        onDoubleClick={onTodoDblClick}
-        onBlur={onEditFinish}
-        onKeyPress={onEnterPress}
+        onDoubleClick={handleDblClick}
+        onBlur={handleEditFinish}
+        onKeyPress={handleEnterPress}
       >
         {isEditable ? editableTodoText : todoState}
       </div>
-      <button className="todo__delete-button" onClick={onTodoDelete} />
+      <button className="todo__delete-button" onClick={handleTodoDelete} />
     </div>
   );
 };

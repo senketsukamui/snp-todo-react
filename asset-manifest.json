@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/snp-todo-react/static/css/main.e67ee269.chunk.css",
-    "main.js": "/snp-todo-react/static/js/main.2747cc62.chunk.js",
-    "main.js.map": "/snp-todo-react/static/js/main.2747cc62.chunk.js.map",
+    "main.js": "/snp-todo-react/static/js/main.f4507f5a.chunk.js",
+    "main.js.map": "/snp-todo-react/static/js/main.f4507f5a.chunk.js.map",
     "runtime-main.js": "/snp-todo-react/static/js/runtime-main.f68be9ee.js",
     "runtime-main.js.map": "/snp-todo-react/static/js/runtime-main.f68be9ee.js.map",
     "static/js/2.97ac59c6.chunk.js": "/snp-todo-react/static/js/2.97ac59c6.chunk.js",
     "static/js/2.97ac59c6.chunk.js.map": "/snp-todo-react/static/js/2.97ac59c6.chunk.js.map",
     "index.html": "/snp-todo-react/index.html",
-    "precache-manifest.b19b5fca03fd29afdc2b5ffbb0c42ee7.js": "/snp-todo-react/precache-manifest.b19b5fca03fd29afdc2b5ffbb0c42ee7.js",
+    "precache-manifest.7b630e6d40ab27f4f16e3a5bf9965c88.js": "/snp-todo-react/precache-manifest.7b630e6d40ab27f4f16e3a5bf9965c88.js",
     "service-worker.js": "/snp-todo-react/service-worker.js",
     "static/css/main.e67ee269.chunk.css.map": "/snp-todo-react/static/css/main.e67ee269.chunk.css.map",
     "static/js/2.97ac59c6.chunk.js.LICENSE.txt": "/snp-todo-react/static/js/2.97ac59c6.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.f68be9ee.js",
     "static/js/2.97ac59c6.chunk.js",
     "static/css/main.e67ee269.chunk.css",
-    "static/js/main.2747cc62.chunk.js"
+    "static/js/main.f4507f5a.chunk.js"
   ]
 }

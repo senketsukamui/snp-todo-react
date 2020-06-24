@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0c84620b7bbafaa3ac16acc357b72340",
+    "revision": "e8ac008f2e4ec33351b797411893c978",
     "url": "/snp-todo-react/index.html"
   },
   {
-    "revision": "1a9fb9c4cb3290e0ec20",
+    "revision": "9acb5a7a3097ec0d4558",
     "url": "/snp-todo-react/static/css/main.e67ee269.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/snp-todo-react/static/js/2.97ac59c6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1a9fb9c4cb3290e0ec20",
-    "url": "/snp-todo-react/static/js/main.2747cc62.chunk.js"
+    "revision": "9acb5a7a3097ec0d4558",
+    "url": "/snp-todo-react/static/js/main.f4507f5a.chunk.js"
   },
   {
     "revision": "3ce8c2a9ee8762d7001b",

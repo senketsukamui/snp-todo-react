@@ -1,35 +1,44 @@
 import React from "react";
 import "./index.scss";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editTodo, deleteTodo, changeTodoStatus } from "store/actions/todo";
 
 const TodoListItem = (props) => {
+  const dispatch = useDispatch();
+
   const todoId = props.todo.id;
+
   const [isEditable, setEditableStatus] = React.useState(false);
+
   const [todoState, setTodoState] = React.useState(props.todo.content);
+
   const inputRef = React.createRef();
 
   const handleDblClick = () => {
     setEditableStatus(true);
   };
 
-  const handleTodoDelete = () => {
-    props.deleteTodo({
-      id: todoId,
-    });
-  };
+  const handleTodoDelete = React.useCallback(() => {
+    dispatch(
+      deleteTodo({
+        id: todoId,
+      })
+    );
+  }, [dispatch, props.todo]);
 
-  const handleEditFinish = () => {
-    if (!todoState.length) {
+  const handleEditFinish = React.useCallback(() => {
+    if (!todoState.length || !todoState.trim().length) {
       handleTodoDelete();
     } else {
-      props.editTodo({
-        id: todoId,
-        newTodoText: todoState,
-      });
+      dispatch(
+        editTodo({
+          id: todoId,
+          newTodoText: todoState,
+        })
+      );
     }
     setEditableStatus(false);
-  };
+  }, [dispatch, todoState]);
 
   const handleEnterPress = (e) => {
     if (e.key === "Enter") {
@@ -37,9 +46,9 @@ const TodoListItem = (props) => {
     }
   };
 
-  const handleCheckboxClick = () => {
-    props.changeTodoStatus({ id: todoId });
-  };
+  const handleCheckboxClick = React.useCallback(() => {
+    dispatch(changeTodoStatus({ id: todoId }));
+  }, [dispatch, props.todo]);
 
   React.useLayoutEffect(() => {
     if (inputRef.current) {
@@ -59,7 +68,7 @@ const TodoListItem = (props) => {
       classname="todo__edit"
     />
   );
-  
+
   return (
     <div className="todo">
       <i
@@ -81,6 +90,4 @@ const TodoListItem = (props) => {
   );
 };
 
-export default connect(null, { editTodo, deleteTodo, changeTodoStatus })(
-  React.memo(TodoListItem)
-);
+export default React.memo(TodoListItem);

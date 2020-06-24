@@ -2,6 +2,7 @@ import ActionTypes from "../actions";
 import { createReducer } from "@reduxjs/toolkit";
 import omit from "lodash/omit";
 import omitBy from "lodash/omitBy";
+import pick from "lodash/pick";
 import { FILTER_TYPES } from "../../utils";
 import { getLocalStorageTodos } from "../../utils";
 
@@ -10,31 +11,45 @@ const initialState = {
   filterType: FILTER_TYPES.ALL,
 };
 
+const {
+  CREATE_TODO,
+  EDIT_TODO,
+  DELETE_TODO,
+  CHANGE_TODO_STATUS,
+  COMPLETE_ALL,
+  CHANGE_CURRENT_FILTER,
+  CLEAR_COMPLETED_TODOS,
+} = ActionTypes;
+
 export const todoReducer = createReducer(initialState, {
-  [ActionTypes.CREATE_TODO]: (state, action) => {
+  [CREATE_TODO]: (state, action) => {
+    const { payload } = action;
     const todo = {
-      content: action.payload.content,
-      completed: action.payload.completed,
-      id: action.payload.id,
+      content: payload.content,
+      completed: payload.completed,
+      id: payload.id,
     };
-    state.todos[action.payload.id] = todo;
+    state.todos[payload.id] = todo;
   },
 
-  [ActionTypes.EDIT_TODO]: (state, action) => {
-    const newTodoContent = action.payload.newTodoText;
-    state.todos[action.payload.id].content = newTodoContent;
+  [EDIT_TODO]: (state, action) => {
+    const { payload } = action;
+    const newTodoContent = payload.newTodoText;
+    state.todos[payload.id].content = newTodoContent;
   },
 
-  [ActionTypes.DELETE_TODO]: (state, action) => {
-    state.todos = omit(state.todos, action.payload.id);
+  [DELETE_TODO]: (state, action) => {
+    const { payload } = action;
+    delete state.todos[payload.id];
   },
 
-  [ActionTypes.CHANGE_TODO_STATUS]: (state, action) => {
-    const currentTodoStatus = state.todos[action.payload.id].completed;
-    state.todos[action.payload.id].completed = !currentTodoStatus;
+  [CHANGE_TODO_STATUS]: (state, action) => {
+    const { payload } = action;
+    const currentTodoStatus = state.todos[payload.id].completed;
+    state.todos[payload.id].completed = !currentTodoStatus;
   },
 
-  [ActionTypes.COMPLETE_ALL]: (state, action) => {
+  [COMPLETE_ALL]: (state, action) => {
     if (Object.values(state.todos).some((e) => !e.completed)) {
       Object.keys(state.todos).forEach((e) => {
         if (!e.completed) {
@@ -48,11 +63,12 @@ export const todoReducer = createReducer(initialState, {
     }
   },
 
-  [ActionTypes.CHANGE_CURRENT_FILTER]: (state, action) => {
-    state.filterType = action.payload.filterType;
+  [CHANGE_CURRENT_FILTER]: (state, action) => {
+    const { payload } = action;
+    state.filterType = payload.filterType;
   },
 
-  [ActionTypes.CLEAR_COMPLETED_TODOS]: (state, action) => {
+  [CLEAR_COMPLETED_TODOS]: (state, action) => {
     state.todos = omitBy(state.todos, (todo) => todo.completed);
   },
 });

@@ -7,10 +7,10 @@ import { completeAllTodos } from "store/actions/todo";
 
 const Input = (props) => {
   const [inputState, setInputState] = React.useState("");
-   
+
   const onFormSubmit = (e) => {
     e.preventDefault();
-    if (inputState.length) {
+    if (inputState.length && inputState.trim().length) {
       props.createTodo({
         id: nanoid(),
         content: inputState,
@@ -19,7 +19,7 @@ const Input = (props) => {
       setInputState("");
     }
   };
-   
+
   return (
     <div className="todo-form">
       <button
@@ -36,6 +36,7 @@ const Input = (props) => {
           onChange={(e) => {
             setInputState(e.target.value);
           }}
+          onBlur={onFormSubmit}
           value={inputState}
         />
       </form>

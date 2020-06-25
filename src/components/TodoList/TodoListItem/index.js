@@ -12,9 +12,12 @@ const TodoListItem = (props) => {
 
   const [todoState, setTodoState] = React.useState(props.todo.content);
 
+  const [previousTodoContent, setPreviousTodoContent] = React.useState("");
+
   const inputRef = React.createRef();
 
   const handleDblClick = () => {
+    setPreviousTodoContent(todoState);
     setEditableStatus(true);
   };
 
@@ -24,7 +27,7 @@ const TodoListItem = (props) => {
         id: todoId,
       })
     );
-  }, [dispatch, props.todo]);
+  }, [dispatch, todoId]);
 
   const handleEditFinish = React.useCallback(() => {
     if (!todoState.length || !todoState.trim().length) {
@@ -38,18 +41,20 @@ const TodoListItem = (props) => {
       );
     }
     setEditableStatus(false);
-  }, [dispatch, todoState]);
+  }, [dispatch, todoState, handleTodoDelete, todoId]);
 
   const handleKeyPress = (e) => {
-    console.log(e);
-    if (e.key === "Enter" || e.key === "Escape") {
+    if (e.key === "Enter") {
       handleEditFinish();
+    } else if (e.key === "Escape") {
+      setTodoState(previousTodoContent);
+      setEditableStatus(false);
     }
   };
 
   const handleCheckboxClick = React.useCallback(() => {
     dispatch(changeTodoStatus({ id: todoId }));
-  }, [dispatch, props.todo]);
+  }, [dispatch, todoId]);
 
   React.useLayoutEffect(() => {
     if (inputRef.current) {
@@ -66,7 +71,7 @@ const TodoListItem = (props) => {
       value={todoState}
       ref={inputRef}
       onChange={handleEditValue}
-      classname="todo__edit"
+      className="todo__edit"
     />
   );
 

@@ -37,7 +37,7 @@ const Input = () => {
 
   const handleEscPress = (e) => {
     if (e.key === "Escape") {
-      handleFormSubmit(e);
+      setInputState("");
     }
   };
   return (

@@ -16,7 +16,7 @@ const Footer = () => {
     (e) => {
       dispatch(changeCurrentFilter({ filterType: e.target.name }));
     },
-    [dispatch, filterType]
+    [dispatch]
   );
 
   const clearCompletedHandler = React.useCallback(() => {

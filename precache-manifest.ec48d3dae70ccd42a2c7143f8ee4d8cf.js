@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e8ac008f2e4ec33351b797411893c978",
+    "revision": "c8e4380566046274bb46c49a0fb04761",
     "url": "/snp-todo-react/index.html"
   },
   {
-    "revision": "9acb5a7a3097ec0d4558",
+    "revision": "a51ec667c3e7021bea28",
     "url": "/snp-todo-react/static/css/main.e67ee269.chunk.css"
   },
   {
-    "revision": "546f69b4182dfce4c5c7",
-    "url": "/snp-todo-react/static/js/2.97ac59c6.chunk.js"
+    "revision": "25e3e59ebb1a86eda0a6",
+    "url": "/snp-todo-react/static/js/2.b97971d6.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/snp-todo-react/static/js/2.97ac59c6.chunk.js.LICENSE.txt"
+    "url": "/snp-todo-react/static/js/2.b97971d6.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "9acb5a7a3097ec0d4558",
-    "url": "/snp-todo-react/static/js/main.f4507f5a.chunk.js"
+    "revision": "a51ec667c3e7021bea28",
+    "url": "/snp-todo-react/static/js/main.1b58aa2a.chunk.js"
   },
   {
     "revision": "3ce8c2a9ee8762d7001b",
